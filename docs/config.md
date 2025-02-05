@@ -10,7 +10,7 @@ Here's an example of my case.
 This is the basic configuration, the purpose of this is to make suricata catch the ethernet packets.
 
 ## Rules
-You can customize rules and settings based on your security needs in `/var/lib/suricata/rules/local.rules`, you can check out my rules [here!](/docs.rules.txt)
+You can customize rules and settings based on your security needs in `/var/lib/suricata/rules/local.rules`, you can check out my rules [here!](/docs/rules.txt)
 to have permanently updated the suricata rules and checkout the sites, you can use this command:
 ```bash
 sudo suricata-update && sudo systemctl restart suricata
