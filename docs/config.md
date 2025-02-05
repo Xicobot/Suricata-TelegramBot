@@ -25,7 +25,11 @@ Suricata logs network activity in:
 ## To monitor logs in real-time:
 ```bash
 tail -f /var/log/suricata/fast.log
+tail -f /var/log/suricata/eve.json
 ```
+Some examples:
+![image](https://github.com/user-attachments/assets/08962037-404a-425f-bfc8-435d7f5610cb)
+![image](https://github.com/user-attachments/assets/e7e7832c-869a-4192-aa5e-d4335016ed8d)
 
 ## Disabling or Removing a Specific Source in Suricata
 
