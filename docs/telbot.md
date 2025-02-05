@@ -40,6 +40,7 @@ sudo systemctl restart suricata
 ` curl -X POST "https://api.telegram.org/bot<TOKEN_BOT>/sendMessage"      -d "chat_id=<CHAT_BOT>"      -d "text=$(tail -n 10 /var/log/suricata/fast.log | awk '{print $1, $2, $NF-2, "Nmap SYN", $NF}')" `
 
 example:
+
 ![image](https://github.com/user-attachments/assets/967952f3-9e07-416d-b4a9-89eb9f8d1e07)
 
 ## Done!
