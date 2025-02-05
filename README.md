@@ -11,6 +11,10 @@ Suricata is a high-performance, open-source network threat detection engine. It 
 - Lua scripting for enhanced detection
 - Native JSON output support
 
+## Version
+`Ubuntu 24.04 TLS´
+`Suricata 7.0.3`
+
 ## Index
 - [Instalation](/docs/install.md)
 - [Config files](/docs/config.md)
