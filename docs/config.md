@@ -9,6 +9,7 @@ Here's an example of my case.
 
 This is the basic configuration, the purpose of this is to make suricata catch the ethernet packets.
 
+## Rules
 You can customize rules and settings based on your security needs in `/var/lib/suricata/rules/local.rules`, you can check out my rules [here!](/docs.rules.txt)
 
 ## Logs & Monitoring
