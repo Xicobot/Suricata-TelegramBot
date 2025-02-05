@@ -28,6 +28,36 @@ Suricata logs network activity in:
 tail -f /var/log/suricata/fast.log
 ```
 
+## Disabling or Removing a Specific Source in Suricata
+
+If you need to **disable** or **completely remove** a specific rule source in Suricata, follow these steps:
+
+## **Disable a Specific Source**
+To disable a specific rule source, such as `et/pro`, use the following command:
+```bash
+suricata-update disable-source et/pro
+```
+This will prevent Suricata from using rules from `et/pro`, but they will remain installed.
+
+## **Remove a Specific Source Completely**
+If you want to **remove** the source entirely, use this command:
+```bash
+suricata-update remove-source et/pro
+```
+This will **delete** the `et/pro` source from Suricata.
+
+## **Apply the Changes**
+After disabling or removing a source, update the rules to apply the changes:
+```bash
+suricata-update
+```
+Then, restart Suricata to load the new configuration:
+```bash
+sudo systemctl restart suricata
+```
+
+Now, Suricata will no longer use the `et/pro` rule source. 🚀
+
 
 
 ## More Information
