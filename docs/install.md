@@ -1,9 +1,3 @@
-# Suricata-Telegram
-
-## System Information
-- **Operating System:** Ubuntu 24.04 LTS
-- **Suricata Version:** Latest stable release
-
 ## Installation Steps
 
 ### 1. Update System Packages
