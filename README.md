@@ -12,6 +12,6 @@ Suricata is a high-performance, open-source network threat detection engine. It 
 - Native JSON output support
 
 ## Index
-- [Instalation](/docs/installation.md)
+- [Instalation](/docs/install.md)
 - [Config files](/docs/config.md)
 - [Telegram bot](/docs/telbot.md)
