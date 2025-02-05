@@ -19,3 +19,9 @@ Suricata is a high-performance, open-source network threat detection engine. It 
 - [Instalation](/docs/install.md)
 - [Config files](/docs/config.md)
 - [Telegram bot](/docs/telbot.md)
+
+## Contributing
+Contributions are welcome! Feel free to submit a pull request or open an issue.
+
+## License
+Suricata is released under the [GPLv2 License](https://www.gnu.org/licenses/old-licenses/gpl-2.0.html).
