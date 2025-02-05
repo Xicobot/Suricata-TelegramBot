@@ -1,4 +1,4 @@
-# Suricata
+# Suricata-Telegram
 
 ![Suricata Logo](https://suricata.io/wp-content/uploads/2023/09/Logo-Suricata-vert-whitetype-R.png)
 
