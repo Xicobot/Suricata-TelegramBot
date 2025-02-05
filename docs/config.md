@@ -60,10 +60,3 @@ sudo systemctl restart suricata
 ```
 
 Now, Suricata will no longer use the `et/pro` rule source. 🚀
-
-
-
-## More Information
-- [Official Website](https://suricata.io/)
-- [Suricata Documentation](https://suricata.readthedocs.io/en/latest/)
-- [GitHub Repository](https://github.com/OISF/suricata)
