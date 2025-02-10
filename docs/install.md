@@ -35,4 +35,4 @@ To test if Suricata is running properly, use the following command:
 ```bash
 sudo suricata -T -c /etc/suricata/suricata.yaml -v
 ```
-You can use my script to automatize the installation and configuration [here!](script.sh)
+You can use my script to automatize the installation and configuration [here!](/script.sh)
