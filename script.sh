@@ -47,11 +47,11 @@ if [ "$confirm" = "s" ] || [ "$confirm" = "S" ]; then
 
     if [ "$OP1" = "1" ]; then
         sudo tee -a /var/lib/suricata/rules/local.rules > /dev/null <<EOL
-alert tcp $IP any -> any any (msg:"Nmap SYN Scan Detected on $INTERFACE"; flags:S; threshold:type both, track by_src, count 10, seconds 10; sid:1000001; rev:1;)
-alert udp $IP any -> any any (msg:"Nmap UDP Scan Detected on $INTERFACE"; threshold:type both, track by_src, count 10, seconds 10; sid:1000002; rev:1;)
-alert tcp $IP any -> any any (msg:"Nmap NULL Scan Detected on $INTERFACE"; flags:0; threshold:type both, track by_src, count 5, seconds 10; sid:1000003; rev:1;)
-alert tcp $IP any -> any any (msg:"Nmap FIN Scan Detected on $INTERFACE"; flags:F; threshold:type both, track by_src, count 5, seconds 10; sid:1000004; rev:1;)
-alert tcp $IP any -> any any (msg:"Nmap Xmas Scan Detected on $INTERFACE"; flags:FPU; threshold:type both, track by_src, count 5, seconds 10; sid:1000005; rev:1;)
+alert tcp $IP any -> any any (msg:"Nmap SYN scan detected on $INTERFACE"; flags:S; threshold:type both, track by_src, count 10, seconds 10; sid:1000011; rev:1;)
+alert tcp $IP any -> any any (msg:"Nmap Xmas scan detected on $INTERFACE"; flags:FPU; threshold:type both, track by_src, count 5, seconds 10; sid:1000012; rev:1;)
+alert tcp $IP any -> any 22 (msg:"SSH brute force login attempt on $INTERFACE"; flow:to_server,established; content:"SSH-"; offset:0; threshold:type both, track by_src, count 5, seconds 60; classtype:attempted-dos; sid:1000013; rev:1;)
+alert http $IP any -> any any (msg:"Potential SQL injection attempt on $INTERFACE"; flow:to_server,established; content:"select "; nocase; pcre:"/select\s+.*\s+from/i"; classtype:web-application-attack; sid:1000014; rev:1;)
+alert udp $IP any -> any 53 (msg:"Potential DNS tunneling attempt on $INTERFACE"; content:"|00 00 29|"; offset:2; depth:4; threshold:type both, track by_src, count 10, seconds 60; sid:1000015; rev:1;)
 EOL
 
         sudo sed -i 's/^\([[:space:]]*-\s*\)suricata\.rules/\1local.rules/' /etc/suricata/suricata.yaml
