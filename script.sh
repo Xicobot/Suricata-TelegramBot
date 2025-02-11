@@ -47,7 +47,6 @@ EOL
 
     echo "Recargando Suricata..."
    sed -i 's/^\([[:space:]]*-\s*\)suricata\.rules/\1local.rules/'
-    sudo suricata-update
     sudo systemctl restart suricata
 
     echo "¡Regla agregada y Suricata reiniciado!"
