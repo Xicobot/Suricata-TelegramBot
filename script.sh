@@ -55,11 +55,14 @@ alert tcp $IP any -> any any (msg:"Nmap Xmas Scan Detected on $INTERFACE"; flags
 EOL
 
         sudo sed -i 's/^\([[:space:]]*-\s*\)suricata\.rules/\1local.rules/' /etc/suricata/suricata.yaml
+	suricata -T
+	systemctl restart suricata
         echo "¡Suricata listo y acabado!"
     elif [ "$OP1" = "2" ]; then
         echo "Recargando Suricata..."
 	sudo suricata-update list-sources
 	sudo suricata-update update-sources
+ 	suricata -T
         sudo systemctl restart suricata
 
         echo "¡Suricata reiniciado!"
