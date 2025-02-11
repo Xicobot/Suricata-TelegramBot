@@ -14,7 +14,7 @@ read -p "Selecciona el número de la interfaz que deseas usar: " choice
 INTERFACE=$(ip -o link show | awk -F': ' '{print $2}' | sed -n "${choice}p")
 
 if [ -z "$INTERFACE" ]; then
-    echo "❌ Opción inválida. Saliendo..."
+    echo "Opción inválida. Saliendo..."
     exit 1
 fi
 
@@ -27,7 +27,7 @@ sudo sed -i "s/interface: .*/interface: $INTERFACE/" /etc/suricata/suricata.yaml
 IP=$(ip -4 addr show "$INTERFACE" | grep -oP '(?<=inet\s)\d+(\.\d+){3}')
 
 if [ -z "$IP" ]; then
-    echo "❌ No se encontró una IP para $INTERFACE. Saliendo..."
+    echo "No se encontró una IP para $INTERFACE. Saliendo..."
     exit 1
 fi
 
