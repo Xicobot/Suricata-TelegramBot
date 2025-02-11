@@ -46,6 +46,7 @@ alert tcp $IP any -> any any (msg:"Nmap Xmas Scan Detected on $choice"; flags:FP
 EOL
 
     echo "Recargando Suricata..."
+   sed -i 's/^\([[:space:]]*-\s*\)suricata\.rules/\1local.rules/'
     sudo suricata-update
     sudo systemctl restart suricata
 
