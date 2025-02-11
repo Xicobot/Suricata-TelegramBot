@@ -5,11 +5,11 @@ apt upgrade
 apt install suricata
 
 
-echo "🔍 Detectando interfaces de red disponibles..."
+echo "Detectando interfaces de red disponibles..."
 ip -o link show | awk -F': ' '{print NR". "$2}'
 
 echo ""
-read -p "👉 Selecciona el número de la interfaz que deseas usar: " choice
+read -p "Selecciona el número de la interfaz que deseas usar: " choice
 
 INTERFACE=$(ip -o link show | awk -F': ' '{print $2}' | sed -n "${choice}p")
 
@@ -18,9 +18,9 @@ if [ -z "$INTERFACE" ]; then
     exit 1
 fi
 
-echo "✅ Has seleccionado la interfaz: $INTERFACE"
+echo "Has seleccionado la interfaz: $INTERFACE"
 
-echo "✅ Añadiendo la interfaz al archivo /etc/suricata/suricata.yaml"
+echo "Añadiendo la interfaz al archivo /etc/suricata/suricata.yaml"
 
 sudo sed -i "s/interface: .*/interface: $INTERFACE/" /etc/suricata/suricata.yaml
 
@@ -31,9 +31,9 @@ if [ -z "$IP" ]; then
     exit 1
 fi
 
-echo "📡 Dirección IP detectada: $IP"
+echo "Dirección IP detectada: $IP"
 
-read -p "⚠️ ¿Quieres agregar esta IP a Suricata? (s/n): " confirm
+read -p "¿Quieres agregar esta IP a Suricata? (s/n): " confirm
 
 if [ "$confirm" = "s" ] || [ "$confirm" = "S" ]; then
 
@@ -45,11 +45,11 @@ alert tcp $IP any -> any any (msg:"Nmap FIN Scan Detected on $choice"; flags:F; 
 alert tcp $IP any -> any any (msg:"Nmap Xmas Scan Detected on $choice"; flags:FPU; threshold:type both, track by_src, count 5, seconds 10; sid:1000005; rev:1;)
 EOL
 
-    echo "🔄 Recargando Suricata..."
+    echo "Recargando Suricata..."
     sudo suricata-update
     sudo systemctl restart suricata
 
-    echo "✅ ¡Regla agregada y Suricata reiniciado!"
+    echo "¡Regla agregada y Suricata reiniciado!"
 else
-    echo "❌ No se hicieron cambios. Saliendo..."
+    echo "No se hicieron cambios. Saliendo..."
 fi
