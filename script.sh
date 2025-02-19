@@ -1,8 +1,8 @@
 #!/bin/bash
 
-sudo apt update -y
-sudo apt upgrade -y
-sudo apt install -y suricata
+apt update -y
+apt upgrade -y
+apt install -y suricata
 
 echo "Detectando interfaces de red disponibles..."
 ip -o link show | awk -F': ' '{print NR". "$2}'
