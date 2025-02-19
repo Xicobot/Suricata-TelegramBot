@@ -36,8 +36,8 @@ read -p "¿Quieres agregar esta IP a Suricata? (s/n): " confirm
 if [ "$confirm" = "s" ] || [ "$confirm" = "S" ]; then
 
     echo "¿Qué reglas quieres usar?"
-    echo "1: Reglas personalizadas (Recomendado)"
-    echo "2: Reiniciar Suricata sin agregar reglas"
+    echo "1: Reglas personalizadas"
+    echo "2: Suricata con reglas de repositorios (Recomendado) "
     read -p "Elige una opción (1 o 2): " OP1
 
     if [ -z "$OP1" ]; then
