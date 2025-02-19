@@ -20,7 +20,7 @@ fi
 echo "Has seleccionado la interfaz: $INTERFACE"
 
 echo "Añadiendo la interfaz al archivo /etc/suricata/suricata.yaml"
-sudo sed -i "s/interface: .*/interface: $INTERFACE/" /etc/suricata/suricata.yaml
+sed -i "s/interface: .*/interface: $INTERFACE/" /etc/suricata/suricata.yaml
 
 IP=$(ip -4 addr show "$INTERFACE" | grep -oP '(?<=inet\s)\d+(\.\d+){3}')
 
@@ -46,7 +46,7 @@ if [ "$confirm" = "s" ] || [ "$confirm" = "S" ]; then
     fi
 
     if [ "$OP1" = "1" ]; then
-        sudo tee -a /var/lib/suricata/rules/local.rules > /dev/null <<EOL
+        tee -a /var/lib/suricata/rules/local.rules > /dev/null <<EOL
 alert tcp $IP any -> any any (msg:"Nmap SYN scan detected on $INTERFACE"; flags:S; threshold:type both, track by_src, count 10, seconds 10; sid:1000011; rev:1;)
 alert tcp $IP any -> any any (msg:"Nmap Xmas scan detected on $INTERFACE"; flags:FPU; threshold:type both, track by_src, count 5, seconds 10; sid:1000012; rev:1;)
 alert tcp $IP any -> any 22 (msg:"SSH brute force login attempt on $INTERFACE"; flow:to_server,established; content:"SSH-"; offset:0; threshold:type both, track by_src, count 5, seconds 60; classtype:attempted-dos; sid:1000013; rev:1;)
@@ -60,9 +60,9 @@ EOL
         echo "¡Suricata listo y acabado!"
     elif [ "$OP1" = "2" ]; then
         echo "Recargando Suricata..."
-	sudo suricata-update
+	suricata-update
 	suricata -T
-        sudo systemctl restart suricata
+        systemctl restart suricata
 
         echo "¡Suricata reiniciado!"
     else
