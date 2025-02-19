@@ -60,9 +60,8 @@ EOL
         echo "¡Suricata listo y acabado!"
     elif [ "$OP1" = "2" ]; then
         echo "Recargando Suricata..."
-	sudo suricata-update list-sources
-	sudo suricata-update update-sources
- 	suricata -T
+	sudo suricata-update
+	suricata -T
         sudo systemctl restart suricata
 
         echo "¡Suricata reiniciado!"
